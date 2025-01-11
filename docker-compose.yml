@@ -2,10 +2,10 @@ services:
   backend:
     container_name: backend
     build:
-      context: ../backend
+      context: ./backend
       dockerfile: Dockerfile
     volumes:
-      - .:/backend
+      - ./backend:/backend
     ports:
       - "8000:8000"
     depends_on:
@@ -44,7 +44,7 @@ services:
   frontend:
     container_name: frontend
     build:
-      context: .
+      context: ./frontend
       dockerfile: Dockerfile
     ports:
       - "443:443" # Map HTTPS port
