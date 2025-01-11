@@ -1,0 +1,67 @@
+services:
+  backend:
+    container_name: backend
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    volumes:
+      - .:/backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+  db:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+
+  redis:
+    container_name: redis
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    entrypoint: [
+        "sh",
+        "-c",
+        "mkdir -p /usr/local/etc/redis && \
+        echo 'bind 0.0.0.0\nport 6379\nmaxmemory-policy noeviction' > /usr/local/etc/redis/redis.conf && \
+        redis-server /usr/local/etc/redis/redis.conf",
+      ]
+    restart: "always" # Update restart policy if needed
+
+  frontend:
+    container_name: frontend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "443:443" # Map HTTPS port
+      - "80:80" # Redirect HTTP to HTTPS
+    volumes:
+      - ./127.0.0.1-key.pem:/frontend/127.0.0.1-key.pem # Mount SSL certificates
+      - ./127.0.0.1.pem:/frontend/127.0.0.1.pem # Mount SSL certificates
+
+    env_file:
+      - ./.env
+    restart: always
+    networks:
+      - localnet
+
+volumes:
+  db_data:
+
+networks:
+  localnet:
+    driver: bridge

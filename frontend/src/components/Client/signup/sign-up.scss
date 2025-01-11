@@ -1,0 +1,112 @@
+.confirm-otp-form {
+  width: 350px;
+  margin: 0 auto;
+  .confirm-otp-form-inner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .title {
+      font-size: 1.5em;
+      font-weight: 600;
+      text-align: center;
+      color: #122629;
+    }
+
+    .description {
+      font-size: 1em;
+      font-weight: 400;
+      text-align: center;
+      color: #122629;
+      margin-top: 10px;
+      margin-bottom: 30px;
+    }
+    .list-otp-entry {
+      display: flex;
+      margin: 0 auto;
+      margin-top: 20px !important;
+
+      height: 30px;
+      width: 300px;
+      justify-content: space-between;
+      margin-top: 10px;
+      input {
+        height: 30px;
+        width: 30px;
+        border: 1px solid #ff6868;
+        border-radius: 7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 5px;
+        outline: none;
+      }
+
+      /* Ẩn nút điều hướng trên trình duyệt Webkit (Chrome, Safari) */
+      input[type="number"]::-webkit-outer-spin-button,
+      input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Ẩn nút điều hướng trên trình duyệt Firefox */
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+    }
+    .resend-otp {
+      font-size: 0.75em;
+      text-align: center;
+      display: flex;
+      gap: 5px;
+      margin: 0 auto;
+      margin-top: 10px !important;
+      margin-bottom: 30px;
+      .text-link {
+        color: #ff6868;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      // cursor: pointer;
+      // color: var(--sign-up-font-color);
+      // &:hover {
+      //   text-decoration: underline;
+      // }
+    }
+
+    .btn-verify {
+      margin: 0 auto;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      align-self: center;
+      width: -moz-fit-content;
+      width: fit-content;
+      padding: 0 20px;
+      height: 35px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      background-color: #fc6868;
+      color: white;
+      font-size: 1em;
+      font-weight: 400;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .back-text-link {
+      text-align: center;
+      font-size: 0.8em;
+      display: block;
+      color: #978d8d;
+      text-decoration: none;
+      width: 100% !important;
+      cursor: pointer;
+    }
+  }
+}

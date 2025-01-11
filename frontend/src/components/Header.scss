@@ -1,0 +1,91 @@
+.account-btn {
+  position: relative !important;
+  &:hover {
+    .user-services-modal {
+      display: block !important;
+    }
+  }
+  .user-services-modal {
+    display: none;
+    width: 120px;
+    // height: 100px;
+    // width: fit-content;
+    padding: 5px 7px;
+    border-radius: 5px;
+    background-color: white;
+    position: absolute;
+    top: 100%;
+    right: 10px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -20px; /* Dưới thẻ cha */
+      left: 0;
+      right: 0;
+      height: 20px; /* Khoảng cách 5px */
+      z-index: 1; /* Đảm bảo không đè modal */
+    }
+
+    .account-service-item {
+      padding-bottom: 0.25rem;
+      padding-top: 0.25rem;
+      list-style-type: none;
+      transition-duration: 0.3s;
+      transition-property: all;
+      transition-timing-function: ease;
+
+      &:hover {
+        padding-left: 0.5rem;
+      }
+      .account-service-link {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 20px;
+        color: #090d14;
+
+        .account-service-icon {
+          margin-right: 5px;
+          height: 15px;
+        }
+      }
+    }
+    // .user-services-modal-item {
+    //   padding: 10px;
+    //   cursor: pointer;
+    //   transition: background-color 0.3s;
+    //   .account-service-item {
+    //     padding-bottom: 0.25rem;
+    //     padding-top: 0.25rem;
+    //     list-style-type: none;
+    //     transition-duration: 0.3s;
+    //     transition-property: all;
+    //     transition-timing-function: ease;
+
+    //     &:hover {
+    //       padding-left: 0.5rem;
+    //     }
+    //     .account-service-link {
+    //       display: flex;
+    //       align-items: center;
+    //       justify-content: start;
+    //       font-size: 13px;
+    //       font-weight: 400;
+    //       line-height: 20px;
+    //       color: #090d14;
+
+    //       .account-service-icon {
+    //         margin-right: 5px;
+    //         height: 15px;
+    //       }
+    //     }
+    //   }
+    // }
+  }
+}
